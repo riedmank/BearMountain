@@ -41,6 +41,8 @@ namespace BearMountain
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseAuthentication();
+
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
 
