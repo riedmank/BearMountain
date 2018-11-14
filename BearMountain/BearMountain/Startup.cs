@@ -54,12 +54,6 @@ namespace BearMountain
 
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
-
-            //hope this changes something
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
         }
     }
 }
