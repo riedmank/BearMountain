@@ -19,6 +19,7 @@ namespace BearMountain.Data
             modelBuilder.Entity<Product>().HasData(
                 new Product
                 {
+                    ID = 101,
                     SKU = "137913",
                     Name = "Arc'teryx Atom LT Insulated Hoodie",
                     Price = 259,
@@ -27,6 +28,7 @@ namespace BearMountain.Data
                 },
                 new Product
                 {
+                    ID = 102,
                     SKU = "117155",
                     Name = "The North Face Furnace 20 Sleeping Bag",
                     Price = 189,
@@ -35,6 +37,7 @@ namespace BearMountain.Data
                 },
                 new Product
                 {
+                    ID = 103,
                     SKU = "128692",
                     Name = "REI Co-op Half Dome 2 Plus Tent",
                     Price = 229,
@@ -43,6 +46,7 @@ namespace BearMountain.Data
                 },
                 new Product
                 {
+                    ID = 104,
                     SKU = "111284",
                     Name = "Osprey Aether AG 70 Pack ",
                     Price = 310,
@@ -51,6 +55,7 @@ namespace BearMountain.Data
                 },
                 new Product
                 {
+                    ID = 105,
                     SKU = "867763",
                     Name = "Delta Kayaks Delta 14 Kayak",
                     Price = 1995,
@@ -59,6 +64,7 @@ namespace BearMountain.Data
                 },
                 new Product
                 {
+                    ID = 106,
                     SKU = "120297",
                     Name = "MSR Lightning Ascent Snowshoes",
                     Price = 299,
@@ -67,6 +73,7 @@ namespace BearMountain.Data
                 },
                 new Product
                 {
+                    ID = 107,
                     SKU = "125922",
                     Name = "GHOST Kato FS 7.7 27.5 Bike",
                     Price = 2029,
@@ -75,6 +82,7 @@ namespace BearMountain.Data
                 },
                 new Product
                 {
+                    ID = 108,
                     SKU = "895931",
                     Name = "Black Diamond Trail Back Trekking Poles - Pair",
                     Price = 79,
@@ -83,6 +91,7 @@ namespace BearMountain.Data
                 },
                 new Product
                 {
+                    ID = 109,
                     SKU = "100106",
                     Name = "Hydro Flask Wide-Mouth Vacuum Water Bottle - 40 fl. oz.",
                     Price = 42,
@@ -91,6 +100,7 @@ namespace BearMountain.Data
                 },
                 new Product
                 {
+                    ID = 110,
                     SKU = "887221",
                     Name = "Darn Tough Hiker Boot Sock Cushion Socks",
                     Price = 24,
