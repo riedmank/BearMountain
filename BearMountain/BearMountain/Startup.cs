@@ -30,7 +30,7 @@ namespace BearMountain
             services.AddMvc();
 
             services.AddDbContext<BearMountainDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("ProductionDb")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +40,8 @@ namespace BearMountain
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseAuthentication();
 
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
