@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BearMountain.Data;
+using BearMountain.Models.Interfaces;
+using BearMountain.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,6 +33,8 @@ namespace BearMountain
 
             services.AddDbContext<BearMountainDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ProductionDb")));
+
+            services.AddTransient<IInventory, InventoryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

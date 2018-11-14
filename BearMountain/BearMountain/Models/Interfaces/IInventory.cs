@@ -16,5 +16,6 @@ namespace BearMountain.Models.Interfaces
         Task UpdateProduct();
 
         Task DeleteProduct(int id);
+
     }
 }
