@@ -9,7 +9,7 @@ namespace BearMountain.Models.Services
 {
     public class InventoryService : IInventory
     {
-        private BearMountainDbContext _context;
+        private readonly BearMountainDbContext _context;
 
         public InventoryService(BearMountainDbContext context)
         {
