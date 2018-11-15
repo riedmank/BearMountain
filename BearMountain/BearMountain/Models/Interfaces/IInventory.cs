@@ -9,9 +9,9 @@ namespace BearMountain.Models.Interfaces
     {
         Task CreateProduct(Product product);
 
-        Task GetProducts();
+        Task<List<Product>> GetProducts();
 
-        Task GetProductById(int? id);
+        Task<Product> GetProductById(int? id);
 
         Task UpdateProduct(Product product);
 
