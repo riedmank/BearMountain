@@ -62,5 +62,17 @@ namespace BearMountain.Controllers
             }
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login()
+        {
+
+        }
     }
 }
