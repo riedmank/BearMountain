@@ -1,0 +1,28 @@
+﻿header {
+    margin: 0 auto;
+    width: 300px;
+    margin-top: 30px;
+    text-align: center;
+    background-color: forestgreen;
+    border: 5px double brown;
+}
+
+article {
+    margin: 0 auto;
+    width: 800px;
+    margin-top: 30px;
+    text-align: center;
+    background-color: forestgreen;
+    border: 5px double brown;
+}
+
+article img {
+    max-height: 200px;
+    max-width: 250px;
+}
+
+body {
+    background-image: url("BearMountain.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
