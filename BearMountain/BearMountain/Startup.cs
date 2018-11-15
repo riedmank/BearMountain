@@ -33,12 +33,7 @@ namespace BearMountain
         {
             services.AddMvc();
 
-            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
-            {
-                
-            }
-
-            )
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
