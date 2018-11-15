@@ -72,6 +72,8 @@ namespace BearMountain.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel lvm)
         {
+            // jbc@me.com
+            // Password!2
             if (ModelState.IsValid)
             {
                 var result = await _signInManager.PasswordSignInAsync(lvm.Email, lvm.Password, false, false);
