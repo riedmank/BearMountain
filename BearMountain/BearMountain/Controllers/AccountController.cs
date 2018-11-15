@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using BearMountain.Models;
 using BearMountain.Models.ViewModels;
@@ -57,9 +58,26 @@ namespace BearMountain.Controllers
 
                 if(result.Succeeded)
                 {
+
+                    Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
+
+                    Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+
+                    List<Claim> myclaims = new List<Claim>()
+                    {
+                        fullNameClaim,
+                        emailClaim
+                    };
+
+                    await _userManager.AddClaimsAsync(user, myclaims);
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    return RedirectToAction("Index", "Home");
+
                 }
             }
+
             return View();
         }
 
@@ -72,6 +90,8 @@ namespace BearMountain.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel lvm)
         {
+            // jbc123@me.com
+            // Password!2
             if (ModelState.IsValid)
             {
                 var result = await _signInManager.PasswordSignInAsync(lvm.Email, lvm.Password, false, false);
