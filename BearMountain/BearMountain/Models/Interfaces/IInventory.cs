@@ -7,13 +7,13 @@ namespace BearMountain.Models.Interfaces
 {
     public interface IInventory
     {
-        Task CreateProduct();
+        Task CreateProduct(Product product);
 
-        Task GetProducts();
+        Task<List<Product>> GetProducts();
 
-        Task GetProductById(int? id);
+        Task<Product> GetProductById(int? id);
 
-        Task UpdateProduct();
+        Task UpdateProduct(Product product);
 
         Task DeleteProduct(int id);
 

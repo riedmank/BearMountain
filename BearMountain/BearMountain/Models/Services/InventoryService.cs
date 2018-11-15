@@ -1,5 +1,6 @@
 ﻿using BearMountain.Data;
 using BearMountain.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace BearMountain.Models.Services
 {
     public class InventoryService : IInventory
     {
-        private readonly BearMountainDbContext _context;
+        private BearMountainDbContext _context;
 
         public InventoryService(BearMountainDbContext context)
         {
@@ -17,29 +18,33 @@ namespace BearMountain.Models.Services
 
         }
 
-        public Task CreateProduct()
+        public async Task CreateProduct(Product product)
         {
-            throw new NotImplementedException();
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteProduct(int id)
+        public async Task DeleteProduct(int id)
         {
-            throw new NotImplementedException();
+            Product product = await GetProductById(id);
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
         }
 
-        public Task GetProductById(int? id)
+        public async Task<Product> GetProductById(int? id)
         {
-            throw new NotImplementedException();
+            return await _context.Products.FirstOrDefaultAsync(p => p.ID == id);
         }
 
-        public Task GetProducts()
+        public async Task<List<Product>> GetProducts()
         {
-            throw new NotImplementedException();
+            return await _context.Products.ToListAsync();
         }
 
-        public Task UpdateProduct()
+        public async Task UpdateProduct(Product product)
         {
-            throw new NotImplementedException();
+            _context.Products.Update(product);
+            await _context.SaveChangesAsync();
         }
     }
 }
