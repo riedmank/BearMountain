@@ -109,5 +109,7 @@ namespace BearMountain.Data
                 });
         }
 
+        public DbSet<Product> Products { get; set; }
+
     }
 }

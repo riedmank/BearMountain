@@ -9,7 +9,7 @@ namespace BearMountain.Models.Services
 {
     public class InventoryService : IInventory
     {
-        private readonly BearMountainDbContext _context;
+        private BearMountainDbContext _context;
 
         public InventoryService(BearMountainDbContext context)
         {
@@ -17,9 +17,9 @@ namespace BearMountain.Models.Services
 
         }
 
-        public Task CreateProduct()
+        public Task CreateProduct(Product product)
         {
-            throw new NotImplementedException();
+            _context
         }
 
         public Task DeleteProduct(int id)
@@ -37,7 +37,7 @@ namespace BearMountain.Models.Services
             throw new NotImplementedException();
         }
 
-        public Task UpdateProduct()
+        public Task UpdateProduct(Product product)
         {
             throw new NotImplementedException();
         }
