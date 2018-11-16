@@ -1,4 +1,9 @@
-﻿<head>
+﻿@using Microsoft.AspNetCore.Identity
+@using BearMountain.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+
+<head>
     <title>Bear Mountain</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
@@ -11,6 +16,14 @@
         <nav>
             <a href="/Account/Login">Login</a>
             <a href="/Account/Register">Register</a>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <p>Signed in as: @User.Claims.First(name => name.Type == "FullName").Value</p>
+            }
+            else
+            {
+                <p>You are not logged in!</p>
+            }
         </nav>
     </header>
 
