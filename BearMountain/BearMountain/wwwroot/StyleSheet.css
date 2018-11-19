@@ -22,7 +22,7 @@ article img {
 }
 
 body {
-    background-image: url("BearMountain.jpg");
+    background-image: url("assets/BearMountain.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
