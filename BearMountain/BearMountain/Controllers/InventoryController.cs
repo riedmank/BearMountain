@@ -30,6 +30,7 @@ namespace BearMountain.Controllers
         /// </summary>
         /// <returns>Returns a view of all objects</returns>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _product.GetProducts());
