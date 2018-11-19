@@ -13,21 +13,5 @@ namespace BearMountain.Models
 
         public string LastName { get; set; }
 
-        public ProductTypes InterestedProduct { get; set; }
-
-        public enum ProductTypes
-        {
-            [Display(Name = "Outdoor Gear")]
-            outdoors,
-            [Display(Name = "Kitchen")]
-            kitchen,
-            [Display(Name = "School")]
-            school,
-            [Display(Name = "Automotive")]
-            automotive,
-            [Display(Name = "Circus")]
-            circus
-        }
-
     }
 }
