@@ -12,7 +12,13 @@ namespace BearMountain.Controllers
 {
     public class AccountController : Controller
     {
+        /// <summary>
+        /// The user manager
+        /// </summary>
         private UserManager<ApplicationUser> _userManager;
+        /// <summary>
+        /// The sign in manager
+        /// </summary>
         private SignInManager<ApplicationUser> _signInManager;
 
         /// <summary>
@@ -40,7 +46,7 @@ namespace BearMountain.Controllers
         /// Registers the specified RVM.
         /// </summary>
         /// <param name="rvm">The RVM.</param>
-        /// <returns>Returns view</returns>
+        /// <returns>Redirects back to home</returns>
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel rvm)
         {
@@ -81,17 +87,24 @@ namespace BearMountain.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Allows the user to login
+        /// </summary>
+        /// <returns>Returns the login page view</returns>
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
+        /// <summary>
+        /// Logins the specified LVM.
+        /// </summary>
+        /// <param name="lvm">The LVM.</param>
+        /// <returns>Returns to the home page upon successful login</returns>
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel lvm)
         {
-            // jbc123@me.com
-            // Password!2
             if (ModelState.IsValid)
             {
                 var result = await _signInManager.PasswordSignInAsync(lvm.Email, lvm.Password, false, false);
@@ -104,8 +117,6 @@ namespace BearMountain.Controllers
                 {
                     ModelState.AddModelError(string.Empty, "Incorrect User Name or password!");
                 }
-
-
             }
 
             return View(lvm);
