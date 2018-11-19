@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using BearMountain.Models;
 using BearMountain.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -37,6 +38,7 @@ namespace BearMountain.Controllers
         /// </summary>
         /// <returns>Returns View</returns>
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
@@ -48,6 +50,7 @@ namespace BearMountain.Controllers
         /// <param name="rvm">The RVM.</param>
         /// <returns>Redirects back to home</returns>
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel rvm)
         {
             if(ModelState.IsValid)
@@ -92,6 +95,7 @@ namespace BearMountain.Controllers
         /// </summary>
         /// <returns>Returns the login page view</returns>
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
@@ -103,6 +107,7 @@ namespace BearMountain.Controllers
         /// <param name="lvm">The LVM.</param>
         /// <returns>Returns to the home page upon successful login</returns>
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel lvm)
         {
             if (ModelState.IsValid)

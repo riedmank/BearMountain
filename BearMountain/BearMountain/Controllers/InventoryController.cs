@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BearMountain.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BearMountain.Controllers
 {
+    [Authorize(Policy = "EmailPolicy")]
     public class InventoryController : Controller
     {
         /// <summary>
@@ -27,9 +29,16 @@ namespace BearMountain.Controllers
         /// Displays all products
         /// </summary>
         /// <returns>Returns a view of all objects</returns>
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             return View(await _product.GetProducts());
+        }
+
+        [HttpGet]
+        public IActionResult Cart()
+        {
+            return View();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BearMountain.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BearMountain.Controllers
@@ -27,6 +28,8 @@ namespace BearMountain.Controllers
         /// Landing Page
         /// </summary>
         /// <returns>Returns the home page view</returns>
+        [HttpGet]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
