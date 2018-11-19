@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace BearMountain.Controllers
 {
     [Authorize(Policy = "BearMtnEmail")]
-
     public class InventoryController : Controller
     {
         private readonly IInventory _product;
