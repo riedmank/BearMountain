@@ -44,6 +44,12 @@ namespace BearMountain
             options.UseSqlServer(Configuration.GetConnectionString("IdentityDb")));
 
             services.AddTransient<IInventory, InventoryService>();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("BearMtnEmployeesOnly", policy => policy.RequireClaim());
+                options.AddPolicy("EmailPolicy", policy => policy.Requirements.Add(new RequireEmailRequirement()));
+            })
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

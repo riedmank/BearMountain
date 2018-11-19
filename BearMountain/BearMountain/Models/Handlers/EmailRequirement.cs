@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BearMountain.Models.Handlers
 {
-    public class OutdoorProductsRequirement : IAuthorizationRequirement
+    public class EmailRequirement : IAuthorizationRequirement
     {
-        public OutdoorProductsRequirement()
+        public EmailRequirement()
         {
 
         }
