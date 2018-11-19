@@ -14,6 +14,7 @@
     <header>
         <h1>Bear Mountain</h1>
         <nav>
+            <a asp-controller="Inventory">Products</a>
             <a href="/Account/Login">Login</a>
             <a href="/Account/Register">Register</a>
             @if (SignInManager.IsSignedIn(User))

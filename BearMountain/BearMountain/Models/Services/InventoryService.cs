@@ -15,7 +15,6 @@ namespace BearMountain.Models.Services
         public InventoryService(BearMountainDbContext context)
         {
             _context = context;
-
         }
 
         public async Task CreateProduct(Product product)
