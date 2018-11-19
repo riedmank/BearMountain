@@ -9,6 +9,12 @@ namespace BearMountain.Models.Handlers
 {
     public class BearMountainEmailHandler : AuthorizationHandler<EmailRequirement>
     {
+        /// <summary>
+        /// Makes a decision if authorization is allowed based on a specific requirement.
+        /// </summary>
+        /// <param name="context">The authorization context.</param>
+        /// <param name="requirement">The requirement to evaluate.</param>
+        /// <returns>Returns a completed task</returns>
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, EmailRequirement requirement)
         {
             if (!context.User.HasClaim(e => e.Type == ClaimTypes.Email))
