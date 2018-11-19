@@ -49,7 +49,6 @@ namespace BearMountain
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("BearMtnEmail", policy => policy.RequireClaim("BearMtnEmail"));
                 options.AddPolicy("EmailPolicy", policy => policy.Requirements.Add(new EmailRequirement()));
             });
 
