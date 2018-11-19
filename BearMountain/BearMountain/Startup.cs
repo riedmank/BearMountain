@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authorization;
+using BearMountain.Models.Handlers;
 
 namespace BearMountain
 {
@@ -47,9 +49,12 @@ namespace BearMountain
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("BearMtnEmployeesOnly", policy => policy.RequireClaim());
-                options.AddPolicy("EmailPolicy", policy => policy.Requirements.Add(new RequireEmailRequirement()));
-            })
+                options.AddPolicy("BearMtnEmployeesOnly", policy => policy.RequireClaim("BearMtnEmployeesOnly"));
+                options.AddPolicy("EmailPolicy", policy => policy.Requirements.Add(new EmailRequirement()));
+            });
+
+            services.AddScoped<IAuthorizationHandler, BearMountainEmailHandler>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
