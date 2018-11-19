@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BearMountain.Migrations
 {
     [DbContext(typeof(BearMountainDbContext))]
-    [Migration("20181114184952_seedProducts")]
-    partial class seedProducts
+    [Migration("20181119184432_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
+                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -38,7 +38,7 @@ namespace BearMountain.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
 
                     b.HasData(
                         new { ID = 101, Description = "The Arc'teryx Atom LT Insulated hoodie featuring Coreloft™ insulation and air permeable side panels functions as an outer layer or as a mid layer depending on the conditions.", Image = "arcteryxJacket.jpeg", Name = "Arc'teryx Atom LT Insulated Hoodie", Price = 259m, SKU = "137913" },

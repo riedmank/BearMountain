@@ -41,7 +41,7 @@ namespace BearMountain
                 options.UseSqlServer(Configuration.GetConnectionString("ProductionDb")));
 
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("IdentityDb")));
+                options.UseSqlServer(Configuration.GetConnectionString("IdentityDb")));
 
             services.AddTransient<IInventory, InventoryService>();
         }
