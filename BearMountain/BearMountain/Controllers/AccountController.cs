@@ -66,10 +66,13 @@ namespace BearMountain.Controllers
 
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
 
+                    Claim bearMtnEmail = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+
                     List<Claim> myclaims = new List<Claim>()
                     {
                         fullNameClaim,
-                        emailClaim
+                        emailClaim,
+                        bearMtnEmail
                     };
 
                     await _userManager.AddClaimsAsync(user, myclaims);
