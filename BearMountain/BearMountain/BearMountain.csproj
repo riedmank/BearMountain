@@ -2,13 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <UserSecretsId>de5177d5-6438-4600-9ea2-5c52d6fb9159</UserSecretsId>
+    <UserSecretsId>5891577c-0144-44e0-b34a-2d23d826df2d</UserSecretsId>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
