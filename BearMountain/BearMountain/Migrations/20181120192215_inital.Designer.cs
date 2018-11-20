@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BearMountain.Migrations
 {
     [DbContext(typeof(BearMountainDbContext))]
-    [Migration("20181120190043_setup")]
-    partial class setup
+    [Migration("20181120192215_inital")]
+    partial class inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace BearMountain.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("BearMountain.Models.BasketItems", b =>
+            modelBuilder.Entity("BearMountain.Models.BasketItem", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -91,7 +91,7 @@ namespace BearMountain.Migrations
                     b.ToTable("UserBasket");
                 });
 
-            modelBuilder.Entity("BearMountain.Models.BasketItems", b =>
+            modelBuilder.Entity("BearMountain.Models.BasketItem", b =>
                 {
                     b.HasOne("BearMountain.Models.UserBasket", "UserBasket")
                         .WithMany("BasketItems")

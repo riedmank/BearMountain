@@ -19,7 +19,7 @@ namespace BearMountain.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("BearMountain.Models.BasketItems", b =>
+            modelBuilder.Entity("BearMountain.Models.BasketItem", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -89,7 +89,7 @@ namespace BearMountain.Migrations
                     b.ToTable("UserBasket");
                 });
 
-            modelBuilder.Entity("BearMountain.Models.BasketItems", b =>
+            modelBuilder.Entity("BearMountain.Models.BasketItem", b =>
                 {
                     b.HasOne("BearMountain.Models.UserBasket", "UserBasket")
                         .WithMany("BasketItems")

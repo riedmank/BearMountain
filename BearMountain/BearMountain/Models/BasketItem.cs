@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BearMountain.Models
 {
-    public class BasketItems
+    public class BasketItem
     {
         public int ID { get; set; }
 
