@@ -49,7 +49,7 @@ namespace BearMountain
                 .AddDefaultTokenProviders();
 
             services.AddDbContext<BearMountainDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("ProductionDb")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("IdentityDb")));
