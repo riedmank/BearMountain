@@ -3,14 +3,16 @@ using BearMountain.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BearMountain.Migrations
 {
     [DbContext(typeof(BearMountainDbContext))]
-    partial class BearMountainDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181120181100_localSetup")]
+    partial class localSetup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
