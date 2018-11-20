@@ -36,6 +36,26 @@ namespace BearMountain.Controllers
             return View(await _product.GetProducts());
         }
 
+        /// <summary>
+        /// Gets details for a product
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>Returns a product detail view</returns>
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var product = await _product.GetProductById(id);
+
+            if (product == null)
+                return NotFound();
+
+            return View(product);
+        }
+
         [HttpGet]
         public IActionResult Cart()
         {
