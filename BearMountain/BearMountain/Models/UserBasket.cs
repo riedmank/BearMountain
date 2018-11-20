@@ -8,10 +8,9 @@ namespace BearMountain.Models
 {
     public class UserBasket
     {
-        [Key]
-        public string UserID { get; set; }
+        public int ID { get; set; }
 
-        public int BasketID { get; set; }
+        public string UserID { get; set; }
 
         public ICollection<BasketItems> BasketItems { get; set; }
     }

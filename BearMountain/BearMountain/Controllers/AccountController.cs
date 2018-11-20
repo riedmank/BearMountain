@@ -68,9 +68,13 @@ namespace BearMountain.Controllers
                     LastName = rvm.LastName
                 };
 
-                var result = await _userManager.CreateAsync(user, rvm.Password);   
-                
-                _context.
+                var result = await _userManager.CreateAsync(user, rvm.Password);
+
+                UserBasket newUserBasket = new UserBasket();
+                newUserBasket.UserID = user.Email;
+
+                _context.UserBasket.Add(newUserBasket);
+                await _context.SaveChangesAsync();
 
                 if(result.Succeeded)
                 {
