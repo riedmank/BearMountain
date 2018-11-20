@@ -1,5 +1,6 @@
 ﻿using BearMountain.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,13 @@ namespace BearMountain.Components
         public ItemsInCart(BearMountainDbContext context)
         {
             _context = context;
+        }
+        
+        public async Task<IViewComponentResult> InvokeAsync(int id)
+        {
+            var itemsInCart =  await _context.BasketItems.Where(cart => cart.BasketID == id).ToListAsync();
+
+            return View(itemsInCart);
         }
     }
 }
