@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using BearMountain.Data;
 using BearMountain.Models;
+using BearMountain.Models.Interfaces;
 using BearMountain.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -22,15 +24,18 @@ namespace BearMountain.Controllers
         /// </summary>
         private SignInManager<ApplicationUser> _signInManager;
 
+        private BearMountainDbContext _context;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountController"/> class.
         /// </summary>
         /// <param name="userManager">The user manager.</param>
         /// <param name="signInManager">The sign in manager.</param>
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, BearMountainDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
         }
 
         /// <summary>
@@ -64,6 +69,12 @@ namespace BearMountain.Controllers
                 };
 
                 var result = await _userManager.CreateAsync(user, rvm.Password);
+
+                UserBasket newUserBasket = new UserBasket();
+                newUserBasket.UserID = user.Email;
+
+                _context.UserBasket.Add(newUserBasket);
+                await _context.SaveChangesAsync();
 
                 if(result.Succeeded)
                 {
