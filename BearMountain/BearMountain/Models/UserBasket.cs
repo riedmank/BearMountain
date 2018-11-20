@@ -11,6 +11,8 @@ namespace BearMountain.Models
         [Key]
         public string UserID { get; set; }
 
-        public int MyProperty { get; set; }
+        public int BasketID { get; set; }
+
+        public ICollection<BasketItems> BasketItems { get; set; }
     }
 }

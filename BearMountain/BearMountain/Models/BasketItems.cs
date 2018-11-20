@@ -17,6 +17,6 @@ namespace BearMountain.Models
 
         public bool CheckedOut { get; set; }
 
-
+        public UserBasket UserBasket { get; set; }
     }
 }
