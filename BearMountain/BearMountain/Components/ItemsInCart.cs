@@ -17,8 +17,10 @@ namespace BearMountain.Components
             _context = context;
         }
         
-        public async Task<IViewComponentResult> InvokeAsync(int id)
+        public async Task<IViewComponentResult> InvokeAsync(string email)
         {
+            var id = _context.UserBasket.First(e => e.UserID == email).ID;
+
             var itemsInCart =  await _context.BasketItems.Where(cart => cart.BasketID == id).ToListAsync();
 
             return View(itemsInCart);
