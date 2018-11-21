@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +8,7 @@ namespace BearMountain.Models
 {
     public class Product
     {
+        [Key]
         public int ID { get; set; }
 
         public string SKU { get; set; }
@@ -19,5 +21,6 @@ namespace BearMountain.Models
 
         public string Image { get; set; }
 
+        public ICollection<BasketItem> BasketItems { get; set; }
     }
 }

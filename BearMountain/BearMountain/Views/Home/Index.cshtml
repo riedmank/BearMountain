@@ -14,10 +14,10 @@
     <header>
         <h1>Bear Mountain</h1>
         <nav>
-            <a asp-controller="Inventory">Products</a>
-            <a href="/Account/Login">Login</a>
-            <a href="/Account/Register">Register</a>
-            <a href="/Inventory/Cart">Shopping Cart</a>
+            <a asp-controller="Inventory" asp-action="Index">Products</a>
+            <a asp-controller="Account" asp-action="Login">Login</a>
+            <a asp-controller="Account" asp-action="Register">Register</a>
+            <a asp-controller="Inventory" asp-action="Cart">Shopping Cart</a>
             @if (SignInManager.IsSignedIn(User))
             {
                 <p>Signed in as: @User.Claims.First(name => name.Type == "FullName").Value</p>

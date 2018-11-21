@@ -43,7 +43,11 @@
             @Html.DisplayFor(model => model.Price)
         </dd>
     </dl>
-
+    <form method="post">
+        <label for="quantity"></label>
+        <input asp-route-data="quantity" name="quantity" type="number" />
+        <button type="submit">Place Order</button>
+    </form>
     <a asp-action="Index">Back to Products</a>
 
 </body>

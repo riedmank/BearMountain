@@ -30,7 +30,7 @@ namespace BearMountain.Models.Services
 
         public async Task RemoveBasketItem(int basketId, int productId)
         {
-            BasketItem basketItem = await _context.BasketItems.FirstOrDefaultAsync(item => item.BasketID == basketId && item.ProductID == productId);
+            BasketItem basketItem = await _context.BasketItems.FirstOrDefaultAsync(item => item.UserBasketID == basketId && item.ProductID == productId);
             _context.BasketItems.Remove(basketItem);
             await _context.SaveChangesAsync();
 
