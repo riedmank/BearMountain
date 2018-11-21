@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BearMountain.Data;
+using BearMountain.Models;
 using BearMountain.Models.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,13 +18,19 @@ namespace BearMountain.Controllers
         /// </summary>
         private readonly IInventory _product;
 
+        private readonly ICart _cart;
+
+        private readonly BearMountainDbContext _context;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="InventoryController"/> class.
         /// </summary>
         /// <param name="product">The product.</param>
-        public InventoryController(IInventory product)
+        public InventoryController(IInventory product, ICart cart, BearMountainDbContext context)
         {
             _product = product;
+            _cart = cart;
+            _context = context;
         }
 
         /// <summary>
@@ -56,10 +64,18 @@ namespace BearMountain.Controllers
             return View(product);
         }
 
-        [HttpGet]
-        public IActionResult Cart()
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Details(int id, int quantity)
         {
-            return View();
+            BasketItem item = new BasketItem();
+            item.ProductID = id;
+            item.UserBasketID = _context.UserBasket.FirstOrDefault().ID;
+            item.Quantity = quantity;
+            item.CheckedOut = false;
+            await _cart.AddBasketItem(item);
+            var product = await _product.GetProductById(id);
+            return View(product);
         }
     }
 }

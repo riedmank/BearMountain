@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BearMountain.Migrations
 {
     [DbContext(typeof(BearMountainDbContext))]
-    [Migration("20181120181550_intial")]
-    partial class intial
+    [Migration("20181121184032_intital")]
+    partial class intital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,6 +19,29 @@ namespace BearMountain.Migrations
                 .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("BearMountain.Models.BasketItem", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("CheckedOut");
+
+                    b.Property<int>("ProductID");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<int>("UserBasketID");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ProductID");
+
+                    b.HasIndex("UserBasketID");
+
+                    b.ToTable("BasketItems");
+                });
 
             modelBuilder.Entity("BearMountain.Models.Product", b =>
                 {
@@ -52,6 +75,32 @@ namespace BearMountain.Migrations
                         new { ID = 109, Description = "The serious capacity on this Hydro Flask Wide-Mouth 40 oz. vacuum water bottle is perfect for all-day hydration (including ice cubes) or finishing your hike with hot soup.", Image = "hydroFlask.jpg", Name = "Hydro Flask Wide-Mouth Vacuum Water Bottle - 40 fl. oz.", Price = 42m, SKU = "100106" },
                         new { ID = 110, Description = "With cushioning for the perfect amount of support and a smooth fit with no slipping, bunching, or blisters, the Darn Tough Hiker Boot Sock Cushion socks have earned a place in the hearts of hikers.", Image = "socks.jpg", Name = "Darn Tough Hiker Boot Sock Cushion Socks", Price = 24m, SKU = "887221" }
                     );
+                });
+
+            modelBuilder.Entity("BearMountain.Models.UserBasket", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("UserID");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("UserBasket");
+                });
+
+            modelBuilder.Entity("BearMountain.Models.BasketItem", b =>
+                {
+                    b.HasOne("BearMountain.Models.Product", "Product")
+                        .WithMany("BasketItems")
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BearMountain.Models.UserBasket", "UserBasket")
+                        .WithMany("BasketItems")
+                        .HasForeignKey("UserBasketID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

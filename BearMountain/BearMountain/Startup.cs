@@ -55,6 +55,7 @@ namespace BearMountain
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultIdentityConnection")));
 
             services.AddTransient<IInventory, InventoryService>();
+            services.AddTransient<ICart, CartService>();
 
             services.AddAuthorization(options =>
             {

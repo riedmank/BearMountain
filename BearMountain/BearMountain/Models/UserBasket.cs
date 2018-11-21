@@ -8,6 +8,7 @@ namespace BearMountain.Models
 {
     public class UserBasket
     {
+        [Key]
         public int ID { get; set; }
 
         public string UserID { get; set; }
