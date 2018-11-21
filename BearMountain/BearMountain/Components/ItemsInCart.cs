@@ -1,4 +1,5 @@
 ﻿using BearMountain.Data;
+using BearMountain.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,7 +13,7 @@ namespace BearMountain.Components
     {
         private BearMountainDbContext _context;
 
-        public ItemsInCart(BearMountainDbContext context)
+        public ItemsInCart(BearMountainDbContext context, )
         {
             _context = context;
         }
@@ -21,9 +22,27 @@ namespace BearMountain.Components
         {
             var id = _context.UserBasket.First(e => e.UserID == email).ID;
 
-            var itemsInCart =  await _context.BasketItems.Where(cart => cart.UserBasketID == id).ToListAsync();
+            var basketItemsInCart =  await _context.BasketItems.Where(cart => cart.UserBasketID == id).ToListAsync();
 
-            return View(itemsInCart);
+            foreach (var item in basketItemsInCart)
+            {
+                var productDetails = _context.Products.Where(p => p.ID == item.ID);
+
+                new CartViewModel
+                {
+                    ProductID = item.ProductID,
+                    UserBasketID = item.UserBasketID,
+                    Quantity = item.Quantity,
+                    CheckedOut = item.CheckedOut,
+                    SKU = productDetails.FirstOrDefault(p => p.ID == item.ProductID).SKU,
+                    Description = productDetails.FirstOrDefault(p => p.ID == item.ProductID).Description,
+                    Image = productDetails.FirstOrDefault(p => p.ID == item.ProductID).Image,
+                    Name = productDetails.FirstOrDefault(p => p.ID == item.ProductID).Name,
+                    Price = productDetails.FirstOrDefault(p => p.ID == item.ProductID).Price
+                };
+            }
+
+            return View(basketItemsInCart);
         }
     }
 }
