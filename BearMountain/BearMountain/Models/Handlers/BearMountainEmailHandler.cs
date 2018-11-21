@@ -17,12 +17,12 @@ namespace BearMountain.Models.Handlers
         /// <returns>Returns a completed task</returns>
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, EmailRequirement requirement)
         {
-            if (!context.User.HasClaim(e => e.Type == ClaimTypes.Email))
+            if (!context.User.HasClaim(e => e.Type == "Email"))
             {
                 return Task.CompletedTask;
             }
 
-            var userEmail = context.User.FindFirst(email => email.Type == ClaimTypes.Email).Value;
+            var userEmail = context.User.FindFirst(email => email.Type == "Email").Value;
 
             if (userEmail.Contains("@bearmountain.com"))
             {

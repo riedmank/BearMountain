@@ -52,7 +52,7 @@ namespace BearMountain
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultIdentityConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("IdentityDb")));
 
             services.AddTransient<IInventory, InventoryService>();
             services.AddTransient<ICart, CartService>();

@@ -81,7 +81,7 @@ namespace BearMountain.Controllers
 
                     Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
 
-                    Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+                    Claim emailClaim = new Claim("Email", user.Email, ClaimValueTypes.Email);
 
                     List<Claim> myclaims = new List<Claim>()
                     {

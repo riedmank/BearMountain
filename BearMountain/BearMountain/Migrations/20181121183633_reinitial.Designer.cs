@@ -3,18 +3,20 @@ using BearMountain.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BearMountain.Migrations
 {
     [DbContext(typeof(BearMountainDbContext))]
-    partial class BearMountainDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181121183633_reinitial")]
+    partial class reinitial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -99,7 +101,7 @@ namespace BearMountain.Migrations
             modelBuilder.Entity("BearMountain.Models.BasketItem", b =>
                 {
                     b.HasOne("BearMountain.Models.Product", "Product")
-                        .WithMany("BasketItems")
+                        .WithMany()
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade);
 

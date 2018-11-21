@@ -21,7 +21,7 @@ namespace BearMountain.Components
         {
             var id = _context.UserBasket.First(e => e.UserID == email).ID;
 
-            var itemsInCart =  await _context.BasketItems.Where(cart => cart.BasketID == id).ToListAsync();
+            var itemsInCart =  await _context.BasketItems.Where(cart => cart.UserBasketID == id).ToListAsync();
 
             return View(itemsInCart);
         }
