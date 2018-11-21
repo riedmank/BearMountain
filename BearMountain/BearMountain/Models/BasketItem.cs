@@ -9,7 +9,7 @@ namespace BearMountain.Models
     {
         public int ID { get; set; }
 
-        public int BasketID { get; set; }
+        public int UserBasketID { get; set; }
 
         public int ProductID { get; set; }
 

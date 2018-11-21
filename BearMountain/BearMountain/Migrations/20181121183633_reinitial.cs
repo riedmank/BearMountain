@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BearMountain.Migrations
 {
-    public partial class inital : Migration
+    public partial class reinitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,21 +43,26 @@ namespace BearMountain.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    BasketID = table.Column<int>(nullable: false),
+                    UserBasketID = table.Column<int>(nullable: false),
                     ProductID = table.Column<int>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
-                    CheckedOut = table.Column<bool>(nullable: false),
-                    UserBasketID = table.Column<int>(nullable: true)
+                    CheckedOut = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_BasketItems", x => x.ID);
                     table.ForeignKey(
+                        name: "FK_BasketItems_Products_ProductID",
+                        column: x => x.ProductID,
+                        principalTable: "Products",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_BasketItems_UserBasket_UserBasketID",
                         column: x => x.UserBasketID,
                         principalTable: "UserBasket",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -76,6 +81,21 @@ namespace BearMountain.Migrations
                     { 109, "The serious capacity on this Hydro Flask Wide-Mouth 40 oz. vacuum water bottle is perfect for all-day hydration (including ice cubes) or finishing your hike with hot soup.", "hydroFlask.jpg", "Hydro Flask Wide-Mouth Vacuum Water Bottle - 40 fl. oz.", 42m, "100106" },
                     { 110, "With cushioning for the perfect amount of support and a smooth fit with no slipping, bunching, or blisters, the Darn Tough Hiker Boot Sock Cushion socks have earned a place in the hearts of hikers.", "socks.jpg", "Darn Tough Hiker Boot Sock Cushion Socks", 24m, "887221" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "UserBasket",
+                columns: new[] { "ID", "UserID" },
+                values: new object[] { 1, "jbc@bearmountain.com" });
+
+            migrationBuilder.InsertData(
+                table: "BasketItems",
+                columns: new[] { "ID", "CheckedOut", "ProductID", "Quantity", "UserBasketID" },
+                values: new object[] { 1, false, 110, 2, 1 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BasketItems_ProductID",
+                table: "BasketItems",
+                column: "ProductID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BasketItems_UserBasketID",

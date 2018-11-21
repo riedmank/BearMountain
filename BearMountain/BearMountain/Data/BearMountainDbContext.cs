@@ -107,23 +107,6 @@ namespace BearMountain.Data
                     Description = "With cushioning for the perfect amount of support and a smooth fit with no slipping, bunching, or blisters, the Darn Tough Hiker Boot Sock Cushion socks have earned a place in the hearts of hikers.",
                     Image = "socks.jpg"
                 });
-
-            modelBuilder.Entity<UserBasket>().HasData(
-                new UserBasket
-                {
-                    ID = 1,
-                    UserID = "jbc@bearmountain.com"
-                });
-
-            modelBuilder.Entity<BasketItem>().HasData(
-                new BasketItem
-                {
-                    ID = 1, 
-                    BasketID = 1,
-                    ProductID = 110,
-                    Quantity = 2,
-                    CheckedOut = false
-                });
         }
 
         public DbSet<Product> Products { get; set; }
