@@ -11,14 +11,12 @@
 <body>
 
     <div>
-
         @if (SignInManager.IsSignedIn(User))
         {
             <h2>Shopping Cart</h2>
 
             @await Component.InvokeAsync("ItemsInCart", @SignInManager.UserManager.GetUserName(User))
         }
-
     </div>
 
     <h2>Details</h2>
