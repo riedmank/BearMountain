@@ -3,13 +3,17 @@
 <table class="basket">
     <thead>
         <tr>
+            <th></th>
             <th>
-                @Html.DisplayNameFor(model => model.ProductID)
+                @Html.DisplayNameFor(model => model.Product.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.Price)
+            </th>
+
         </tr>
     </thead>
     <tbody>
@@ -17,16 +21,19 @@
         {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ProductID)
+                <img class="product" src="~/assets/@Html.DisplayFor(modelItem => item.Product.Image)" height="100" width="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
-            @*<td>
-                <img class="product" src="~/assets/@Html.DisplayFor(modelItem => item.Image)" />
-            </td>*@
             <td>
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                @Html.DisplayFor(modelItem => item.Product.Price)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.ProductID">Details</a>
             </td>
         </tr>
         }

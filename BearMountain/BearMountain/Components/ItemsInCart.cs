@@ -1,4 +1,5 @@
 ﻿using BearMountain.Data;
+using BearMountain.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -21,9 +22,9 @@ namespace BearMountain.Components
         {
             var id = _context.UserBasket.First(e => e.UserID == email).ID;
 
-            var itemsInCart =  await _context.BasketItems.Where(cart => cart.UserBasketID == id).ToListAsync();
+            var basketItemsInCart =  await _context.BasketItems.Where(cart => cart.UserBasketID == id).ToListAsync();
 
-            return View(itemsInCart);
+            return View(basketItemsInCart);
         }
     }
 }
