@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BearMountain.Migrations
 {
     [DbContext(typeof(BearMountainDbContext))]
-    [Migration("20181121184032_intital")]
-    partial class intital
+    [Migration("20181123175404_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

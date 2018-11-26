@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using BearMountain.Models
+@model BearMountain.Models.BasketItem
 
 @inject SignInManager<ApplicationUser> SignInManager
 
@@ -37,7 +38,7 @@
         <img src="~/assets/reiTent.jpg" />
     </article>
     <div class="basket">
-        @await Component.InvokeAsync("ItemsInCart", @User.Claims.First(email => email.Type == "Email").Value))
+        @await Component.InvokeAsync("ItemsInCart", @User.Claims.First(email => email.Type == "Email").Value)
 
     </div>
 

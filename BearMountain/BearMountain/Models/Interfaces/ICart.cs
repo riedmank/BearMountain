@@ -7,10 +7,14 @@ namespace BearMountain.Models.Interfaces
 {
     public interface ICart
     {
-        Task AddBasketItem(BasketItem item);
+        Task AddBasketItem(BasketItem basketItem);
 
-        Task RemoveBasketItem(int basketId, int productId);
+        BasketItem GetBasketItem(int id);
 
-        Task<List<BasketItem>> GetAllItemsForBasketID(int? id);
+        Task UpdateBasketItem(BasketItem basketItem);
+
+        Task RemoveBasketItem(BasketItem basketItem);
+
+        Task<IEnumerable<BasketItem>> GetAllItemsForBasketID(int? id);
     }
 }

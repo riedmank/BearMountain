@@ -1,12 +1,12 @@
-﻿@model BearMountain.Models.Product
+﻿@model BearMountain.Models.ViewModels.BasketViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Edit";
 }
 
 <body>
 
-    <h2>Details</h2>
+    <h2>Edit</h2>
 
     <h4>Product</h4>
 
@@ -44,9 +44,12 @@
     </dl>
     <form method="post">
         <label for="quantity"></label>
-        <input asp-route-data="quantity" name="quantity" type="number" />
+        <input asp-route-data="quantity" name="quantity" type="number" value="@Model.Quantity"/>
+        <input type="hidden" value="@Model.ID" />
         <button type="submit">Place Order</button>
     </form>
     <a asp-action="Index">Back to Products</a>
 
 </body>
+
+

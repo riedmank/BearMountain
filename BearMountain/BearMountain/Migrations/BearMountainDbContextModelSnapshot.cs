@@ -39,10 +39,6 @@ namespace BearMountain.Migrations
                     b.HasIndex("UserBasketID");
 
                     b.ToTable("BasketItems");
-
-                    b.HasData(
-                        new { ID = 1, CheckedOut = false, ProductID = 110, Quantity = 2, UserBasketID = 1 }
-                    );
                 });
 
             modelBuilder.Entity("BearMountain.Models.Product", b =>
@@ -90,10 +86,6 @@ namespace BearMountain.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("UserBasket");
-
-                    b.HasData(
-                        new { ID = 1, UserID = "jbc@bearmountain.com" }
-                    );
                 });
 
             modelBuilder.Entity("BearMountain.Models.BasketItem", b =>
