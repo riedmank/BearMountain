@@ -9,7 +9,6 @@
 
 article {
     margin: 0 auto;
-    width: 800px;
     margin-top: 30px;
     text-align: center;
     background-color: forestgreen;
@@ -19,6 +18,23 @@ article {
 article img {
     max-height: 200px;
     max-width: 250px;
+}
+
+.login {
+    max-width: 600px;
+}
+
+.loginTitle {
+    margin: 0 auto;
+    margin-top: 30px;
+    max-width: 200px;
+    text-align: center;
+    background-color: forestgreen;
+    border: 5px double brown;
+}
+
+.register {
+    padding-top: 15px;
 }
 
 body {
