@@ -1,7 +1,7 @@
 ﻿@model  IEnumerable<BearMountain.Models.BasketItem>
 
 <table class="basket">
-    <thead>
+    @*<thead>
         <tr>
             <th></th>
             <th>
@@ -15,13 +15,15 @@
             </th>
 
         </tr>
-    </thead>
+    </thead>*@
     <tbody>
         @foreach (var item in Model)
         {
         <tr>
             <td>
-                <img class="product" src="~/assets/@Html.DisplayFor(modelItem => item.Product.Image)" height="100" width="100" />
+                <a asp-action="Details" asp-route-id="@item.ProductID">
+                    <img src="~/assets/@Html.DisplayFor(modelItem => item.Product.Image)" />
+                </a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Product.Name)
@@ -31,9 +33,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Product.Price)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.ProductID">Details</a>
             </td>
         </tr>
         }

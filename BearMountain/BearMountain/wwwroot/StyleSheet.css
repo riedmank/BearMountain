@@ -21,11 +21,11 @@ article img {
     max-width: 250px;
 }
 
-body {
+/*body {
     background-image: url("assets/BearMountain.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-}
+}*/
 
 ul {
     list-style-type: none;
@@ -56,3 +56,11 @@ li {
             color: white;
             background-color: #4CAF50;
         }
+
+.basket tr {
+    display: inline;
+}
+
+.basket img {
+    max-width: 100px;
+}
