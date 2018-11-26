@@ -61,7 +61,7 @@ namespace BearMountain.Models.Services
         /// Gets the products.
         /// </summary>
         /// <returns>Returns a list of products</returns>
-        public async Task<List<Product>> GetProducts()
+        public async Task<IEnumerable<Product>> GetProducts()
         {
             return await _context.Products.ToListAsync();
         }
