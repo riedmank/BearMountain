@@ -9,42 +9,29 @@
     Layout = "_Layout";
 }
 
-<header>
-    <h2>Products</h2>
-</header>
-
 @if (SignInManager.IsSignedIn(User))
 {
     @await Component.InvokeAsync("ItemsInCart", @SignInManager.UserManager.GetUserName(User))
 }
 
+<header>
+    <h2>Products</h2>
+</header>
 
-<table>
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+
+<table class="products">
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                <td style="text-align: center;">
+                    <img src="~/assets/@Html.DisplayFor(modelItem => item.Image)" />
                 </td>
                 <td>
-                    <img class="product" src="~/assets/@Html.DisplayFor(modelItem => item.Image)" />
+                    @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.ID">Details</a>
                 </td>
             </tr>
         }
-    </tbody>
 </table>

@@ -37,6 +37,10 @@ ul {
     background-color: #f3f3f3;
 }
 
+h4 {
+    text-align: center;
+}
+
 li {
     float: left;
 }
@@ -77,4 +81,13 @@ table.basket {
     .basket img {
         max-width: 75px;
         max-height: 100px;
+    }
+
+.products img {
+    max-width: 350px;
+    max-height: 350px;
+}
+
+    .products td {
+        padding: 40px;
     }
