@@ -4,6 +4,10 @@
 
 @inject SignInManager<ApplicationUser> SignInManager
 
+@{
+    Layout = "_Layout";
+}
+
 <body>
     <header>
         <h1>Bear Mountain</h1>
@@ -17,9 +21,6 @@
             <p>You are not logged in!</p>
         }
     </header>
-    @{
-        Layout = "_Layout";
-    }
     <article>
         <h4>Featured Products</h4>
         <img src="~/assets/arcteryxJacket.jpg" />

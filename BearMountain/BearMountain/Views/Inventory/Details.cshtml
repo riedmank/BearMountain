@@ -1,8 +1,22 @@
-﻿@model BearMountain.Models.Product
+﻿@using Microsoft.AspNetCore.Identity
+@using BearMountain.Models
+@model BearMountain.Models.Product
+
+@inject SignInManager<ApplicationUser> SignInManager
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "_Layout";
 }
+
+<div>
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        @await Component.InvokeAsync("ItemsInCart", @SignInManager.UserManager.GetUserName(User))
+    }
+
+</div>
 
 <body>
 
@@ -39,7 +53,7 @@
             @Html.DisplayNameFor(model => model.Price)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Price)
+            $@Html.DisplayFor(model => model.Price)
         </dd>
     </dl>
     <form method="post">

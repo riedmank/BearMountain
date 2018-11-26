@@ -16,16 +16,17 @@ article {
     border: 5px double brown;
 }
 
-article img {
-    max-height: 200px;
-    max-width: 250px;
-}
+    article img {
+        max-height: 200px;
+        max-width: 250px;
+    }
 
-/*body {
-    background-image: url("assets/BearMountain.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-}*/
+body {
+    margin: 3%;
+    /*background-image: url("assets/BearMountain.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+}
 
 ul {
     list-style-type: none;
@@ -57,10 +58,23 @@ li {
             background-color: #4CAF50;
         }
 
-.basket tr {
-    display: inline;
+table.basket {
+    /*margin: 0 3%;*/
+    /*width: 900px;*/
+    /*height: 250px;*/
+    overflow-x: scroll;
 }
 
-.basket img {
-    max-width: 100px;
-}
+    .basket tr {
+        display: inline-flex;
+        padding: 15px;
+    }
+
+    .basket td {
+        padding: 5px;
+    }
+
+    .basket img {
+        max-width: 75px;
+        max-height: 100px;
+    }
