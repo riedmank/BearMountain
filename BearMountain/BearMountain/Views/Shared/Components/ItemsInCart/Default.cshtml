@@ -6,22 +6,25 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.ProductID">
-                    <img src="~/assets/@Html.DisplayFor(modelItem => item.Product.Image)" />
-                </a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                $@Html.DisplayFor(modelItem => item.Product.Price)
-            </td>
-        </tr>
+        @if (item.CheckedOut == false)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ProductID">
+                        <img src="~/assets/@Html.DisplayFor(modelItem => item.Product.Image)" />
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.Product.Price)
+                </td>
+            </tr>
+        }
     }
 
 </table>
