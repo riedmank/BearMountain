@@ -9,6 +9,7 @@ using BearMountain.Models.Interfaces;
 using BearMountain.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BearMountain.Controllers
@@ -23,9 +24,13 @@ namespace BearMountain.Controllers
         /// The sign in manager
         /// </summary>
         private SignInManager<ApplicationUser> _signInManager;
-
+        /// <summary>
+        /// The context
+        /// </summary>
         private BearMountainDbContext _context;
-
+        /// <summary>
+        /// The email
+        /// </summary>
         private IEmailSender _email;
 
         /// <summary>
@@ -96,7 +101,11 @@ namespace BearMountain.Controllers
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
-                    await _email.SendEmailAsync(rvm.Email, "Thank you for registering for a new account with Bear Mountain", "<p> Hello!!! <strong>I am Happy!! </strong> </p>");
+                    string subject = "Registration";
+
+                    string msg = "Thank you for registering for a new account with Bear Mountain";
+
+                    await _email.SendEmailAsync(rvm.Email, subject, msg);
 
                     return RedirectToAction("Index", "Home");
 
@@ -131,7 +140,7 @@ namespace BearMountain.Controllers
                 var result = await _signInManager.PasswordSignInAsync(lvm.Email, lvm.Password, false, false);
 
                 if (result.Succeeded)
-                {
+                {                 
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -139,7 +148,6 @@ namespace BearMountain.Controllers
                     ModelState.AddModelError(string.Empty, "Incorrect User Name or password!");
                 }
             }
-
             return View(lvm);
         }
     }
