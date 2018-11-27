@@ -26,16 +26,19 @@ namespace BearMountain.Controllers
 
         private BearMountainDbContext _context;
 
+        private IEmailSender _email;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountController"/> class.
         /// </summary>
         /// <param name="userManager">The user manager.</param>
         /// <param name="signInManager">The sign in manager.</param>
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, BearMountainDbContext context)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, BearMountainDbContext context, IEmailSender email)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
+            _email = email;
         }
 
         /// <summary>
@@ -92,6 +95,8 @@ namespace BearMountain.Controllers
                     await _userManager.AddClaimsAsync(user, myclaims);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    await _email.SendEmailAsync(rvm.Email, "Thank you for registering for a new account with Bear Mountain", "<p> Hello!!! <strong>I am Happy!! </strong> </p>");
 
                     return RedirectToAction("Index", "Home");
 
