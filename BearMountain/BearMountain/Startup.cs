@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authorization;
 using BearMountain.Models.Handlers;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace BearMountain
 {
@@ -56,6 +57,7 @@ namespace BearMountain
 
             services.AddTransient<IInventory, InventoryService>();
             services.AddTransient<ICart, CartService>();
+            services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddAuthorization(options =>
             {
