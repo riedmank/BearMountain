@@ -1,9 +1,17 @@
-﻿@using BearMountain.Models;
+﻿@using Microsoft.AspNetCore.Identity
+@using BearMountain.Models;
 
-@model  IEnumerable<BearMountain.Models.BasketItem>
+@model IEnumerable<BearMountain.Models.ViewModels.BasketViewModel>
+@inject SignInManager<ApplicationUser> SignInManager
 
 @{
     ViewData["Title"] = "Receipt";
+    Layout = "_Layout";
+}
+
+@if (SignInManager.IsSignedIn(User))
+{
+    @await Component.InvokeAsync("ItemsInCart", @SignInManager.UserManager.GetUserName(User))
 }
 
 <h4>Receipt</h4>
@@ -15,17 +23,17 @@
         <tr>
             <td>
                 <a asp-action="Details" asp-route-id="@item.ProductID">
-                    <img src="~/assets/@Html.DisplayFor(modelItem => item.Product.Image)" />
+                    <img src="~/assets/@Html.DisplayFor(modelItem => item.Image)" />
                 </a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Product.Name)
+                @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
-                $@Html.DisplayFor(modelItem => item.Product.Price)
+                $@Html.DisplayFor(modelItem => item.Price)
             </td>
         </tr>
     }
