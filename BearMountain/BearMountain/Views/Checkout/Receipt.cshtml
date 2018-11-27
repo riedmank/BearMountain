@@ -8,15 +8,9 @@
     ViewData["Title"] = "Receipt";
 }
 
-@if (SignInManager.IsSignedIn(User))
-{
-    @await Component.InvokeAsync("ItemsInCart", @SignInManager.UserManager.GetUserName(User))
-}
-
 <h4>Receipt</h4>
 
-<table class="basket">
-
+<table class="products">
     @foreach (var item in Model)
     {
         <tr>
@@ -36,6 +30,13 @@
             </td>
         </tr>
     }
-
-
 </table>
+
+@{
+    decimal grandTotal = 0;
+    foreach (var item in Model)
+    {
+        grandTotal += (item.Price * item.Quantity);
+    }
+    <p>Grand total = $@grandTotal</p>
+}
