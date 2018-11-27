@@ -1,7 +1,34 @@
-﻿
+﻿@using BearMountain.Models;
+
+@model  IEnumerable<BearMountain.Models.BasketItem>
+
 @{
     ViewData["Title"] = "Receipt";
 }
 
-<h2>Receipt</h2>
+<h4>Receipt</h4>
 
+<table class="basket">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.ProductID">
+                    <img src="~/assets/@Html.DisplayFor(modelItem => item.Product.Image)" />
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                $@Html.DisplayFor(modelItem => item.Product.Price)
+            </td>
+        </tr>
+    }
+
+
+</table>
