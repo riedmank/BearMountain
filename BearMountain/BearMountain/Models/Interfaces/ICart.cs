@@ -15,6 +15,6 @@ namespace BearMountain.Models.Interfaces
 
         Task RemoveBasketItem(BasketItem basketItem);
 
-        Task<IEnumerable<BasketItem>> GetAllItemsForBasketID(int? id);
+        Task<IEnumerable<BasketItem>> GetAllItemsFromBasket();
     }
 }

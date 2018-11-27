@@ -1,4 +1,8 @@
-﻿@model IEnumerable<BearMountain.Models.ViewModels.BasketViewModel>
+﻿@using Microsoft.AspNetCore.Identity
+@using BearMountain.Models
+
+@model IEnumerable<BearMountain.Models.ViewModels.BasketViewModel>
+@inject SignInManager<ApplicationUser> SignInManager
 
 @{
     ViewData["Title"] = "Cart";
@@ -32,32 +36,36 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SKU)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <img class="product" src="~/assets/@Html.DisplayFor(modelItem => item.Image)" />
-            </td>
-            <td>    
-                <button type="submit" asp-controller="Checkout" asp-action="Receipt">Checkout!</button>
-                <a asp-controller="Inventory" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
-                <a asp-controller="Inventory" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SKU)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <img class="product" src="~/assets/@Html.DisplayFor(modelItem => item.Image)" />
+                </td>
+                <td>
+                    <a asp-controller="Inventory" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+                    <a asp-controller="Inventory" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<form>
+    <input type="hidden" name="userName" value="@SignInManager.UserManager.GetUserName(User)" />
+    <button type="submit" asp-controller="Checkout" asp-action="Receipt">Checkout!</button>
+</form>

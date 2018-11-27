@@ -33,7 +33,7 @@ namespace BearMountain.Models.Services
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>Returns all basket items</returns>
-        public async Task<IEnumerable<BasketItem>> GetAllItemsForBasketID(int? id)
+        public async Task<IEnumerable<BasketItem>> GetAllItemsFromBasket()
         {
             return await _context.BasketItems.ToListAsync();
         }
