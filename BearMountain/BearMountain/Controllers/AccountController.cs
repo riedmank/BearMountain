@@ -103,7 +103,7 @@ namespace BearMountain.Controllers
 
                     string subject = "Registration";
 
-                    string msg = "Thank you for registering for a new account with Bear Mountain";
+                    string msg = "<p>Thank you for registering for a new account with Bear Mountain</p>";
 
                     await _email.SendEmailAsync(rvm.Email, subject, msg);
 

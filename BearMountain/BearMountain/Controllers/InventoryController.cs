@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BearMountain.Controllers
 {
-    [Authorize(Policy = "EmailPolicy")]
+    //[Authorize(Policy = "EmailPolicy")]
     public class InventoryController : Controller
     {
         /// <summary>
@@ -95,9 +95,9 @@ namespace BearMountain.Controllers
         /// <param name="id">The identifier.</param>
         /// <returns>Returns a view of the cart</returns>
         [HttpGet]
-        public async Task<IActionResult> Cart(int id)
+        public async Task<IActionResult> Cart()
         {
-            var cartItems = await _cart.GetAllItemsForBasketID(id);
+            var cartItems = await _cart.GetAllItemsFromBasket();
             List<Product> products = new List<Product>();
             foreach (var item in cartItems)
             {
@@ -109,19 +109,22 @@ namespace BearMountain.Controllers
             List<BasketViewModel> BVMList = new List<BasketViewModel>();
             foreach (var item in col)
             {
-                BasketViewModel BVM = new BasketViewModel();
-                BVM.SKU = item.Product.SKU;
-                BVM.Name = item.Product.Name;
-                BVM.Price = item.Product.Price;
-                BVM.Description = item.Product.Description;
-                BVM.Image = item.Product.Image;
-                BVM.ProductID = item.Product.ID;
+                if (!item.BasketItem.CheckedOut)
+                {
+                    BasketViewModel BVM = new BasketViewModel();
+                    BVM.SKU = item.Product.SKU;
+                    BVM.Name = item.Product.Name;
+                    BVM.Price = item.Product.Price;
+                    BVM.Description = item.Product.Description;
+                    BVM.Image = item.Product.Image;
+                    BVM.ProductID = item.Product.ID;
 
-                BVM.Quantity = item.BasketItem.Quantity;
-                BVM.CheckedOut = item.BasketItem.CheckedOut;
-                BVM.ID = item.BasketItem.ID;
-                BVM.UserBasketID = item.BasketItem.UserBasketID;
-                BVMList.Add(BVM);
+                    BVM.Quantity = item.BasketItem.Quantity;
+                    BVM.CheckedOut = item.BasketItem.CheckedOut;
+                    BVM.ID = item.BasketItem.ID;
+                    BVM.UserBasketID = item.BasketItem.UserBasketID;
+                    BVMList.Add(BVM);
+                }
             }
             return View(BVMList);
         }

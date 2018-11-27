@@ -26,7 +26,7 @@ namespace BearMountain.Models
 
             EmailAddress to = new EmailAddress(recipient);
 
-            var msg = MailHelper.CreateSingleEmail(from, to, subject, message, null);
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, null, message);
 
             var response = await client.SendEmailAsync(msg);
         }
