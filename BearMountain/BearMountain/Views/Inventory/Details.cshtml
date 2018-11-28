@@ -9,28 +9,13 @@
     Layout = "_Layout";
 }
 
-<div>
-
-    @if (SignInManager.IsSignedIn(User))
-    {
-        @await Component.InvokeAsync("ItemsInCart", @SignInManager.UserManager.GetUserName(User))
-    }
-
-</div>
 
 <body>
 
-    <h2>Details</h2>
+    <h2>@Html.DisplayFor(model => model.Name)</h2>
 
-    <h4>Product</h4>
 
-    <dl>
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+    <dl class="products">
         <dt>
             @Html.DisplayNameFor(model => model.SKU)
         </dt>
@@ -41,7 +26,7 @@
             @Html.DisplayNameFor(model => model.Image)
         </dt>
         <dd>
-            <img class="product" src="~/assets/@Html.DisplayFor(model => model.Image)" />
+            <img src="~/assets/@Html.DisplayFor(model => model.Image)" />
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Description)

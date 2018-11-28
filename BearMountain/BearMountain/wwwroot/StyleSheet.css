@@ -1,23 +1,27 @@
 ﻿header {
-    margin: 0 auto;
-    width: 300px;
-    margin-top: 30px;
+    margin: 3% auto;
     text-align: center;
-    background-color: forestgreen;
+    max-width: 65%;
     border: 5px double brown;
 }
 
 article {
     margin: 0 auto;
+    max-width: 60%;
     margin-top: 30px;
     text-align: center;
-    background-color: forestgreen;
+    padding: 2%;
     border: 5px double brown;
+    height: 1000px;
+    background-image: url("assets/BearMountain.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
     article img {
         max-height: 200px;
         max-width: 250px;
+        margin: 5px;
     }
 
 .login {
@@ -39,9 +43,13 @@ article {
 
 body {
     margin: 3%;
-    /*background-image: url("assets/BearMountain.jpg");*/
-    /*background-repeat: no-repeat;*/
-    /*background-size: cover;*/
+    /*background-image: url("assets/BearMountain.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;*/
+}
+
+nav {
+    margin-bottom: 2%;
 }
 
 ul {
@@ -53,8 +61,29 @@ ul {
     background-color: #f3f3f3;
 }
 
-h4 {
+h1 {
+    font-family: 'Poiret One', cursive;
     text-align: center;
+    font-size: 62px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin: 1% 0;
+}
+
+h2 {
+    font-family: 'Poiret One', cursive;
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 2%;
+    font-weight: 900;
+}
+
+h4 {
+    font-family: 'Poiret One', cursive;
+    text-align: center;
+    font-weight: 900;
+    font-size: 36px;
+    margin-bottom: 3%;
 }
 
 li {
@@ -78,6 +107,18 @@ li {
             background-color: #4CAF50;
         }
 
+table {
+    font-family: 'Poiret One', cursive;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+dd {
+    font-family: 'Poiret One', cursive;
+    font-size: 24px;
+    font-weight:800;
+}
+
 table.basket {
     /*margin: 0 3%;*/
     /*width: 900px;*/
@@ -92,6 +133,7 @@ table.basket {
 
     .basket td {
         padding: 5px;
+        font-size: 18px;
     }
 
     .basket img {

@@ -1,30 +1,20 @@
-﻿@using Microsoft.AspNetCore.Identity
-@using BearMountain.Models;
+﻿@using BearMountain.Models;
 
 @model IEnumerable<BearMountain.Models.ViewModels.BasketViewModel>
-@inject SignInManager<ApplicationUser> SignInManager
 
 @{
     ViewData["Title"] = "Receipt";
     Layout = "_Layout";
 }
 
-@if (SignInManager.IsSignedIn(User))
-{
-    @await Component.InvokeAsync("ItemsInCart", @SignInManager.UserManager.GetUserName(User))
-}
+<h2>Thank you for your order!</h2>
 
-<h4>Receipt</h4>
-
-<table class="basket">
-
+<table class="products">
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.ProductID">
-                    <img src="~/assets/@Html.DisplayFor(modelItem => item.Image)" />
-                </a>
+            <td>               
+                <img src="~/assets/@Html.DisplayFor(modelItem => item.Image)" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -37,6 +27,13 @@
             </td>
         </tr>
     }
-
-
 </table>
+
+@{
+    decimal grandTotal = 0;
+    foreach (var item in Model)
+    {
+        grandTotal += (item.Price * item.Quantity);
+    }
+    <h2>GRAND TOTAL = $@grandTotal</h2>
+}
