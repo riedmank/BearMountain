@@ -110,6 +110,8 @@ namespace BearMountain.Data
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<BasketItem> BasketItems { get; set; }
+        public DbSet<UserBasket> UserBasket { get; set; }
 
     }
 }

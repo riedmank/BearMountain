@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using BearMountain.Data;
 using BearMountain.Models;
+using BearMountain.Models.Interfaces;
 using BearMountain.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BearMountain.Controllers
@@ -21,16 +24,26 @@ namespace BearMountain.Controllers
         /// The sign in manager
         /// </summary>
         private SignInManager<ApplicationUser> _signInManager;
+        /// <summary>
+        /// The context
+        /// </summary>
+        private BearMountainDbContext _context;
+        /// <summary>
+        /// The email
+        /// </summary>
+        private IEmailSender _email;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountController"/> class.
         /// </summary>
         /// <param name="userManager">The user manager.</param>
         /// <param name="signInManager">The sign in manager.</param>
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, BearMountainDbContext context, IEmailSender email)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
+            _email = email;
         }
 
         /// <summary>
@@ -65,12 +78,18 @@ namespace BearMountain.Controllers
 
                 var result = await _userManager.CreateAsync(user, rvm.Password);
 
+                UserBasket newUserBasket = new UserBasket();
+                newUserBasket.UserID = user.Email;
+
+                _context.UserBasket.Add(newUserBasket);
+                await _context.SaveChangesAsync();
+
                 if(result.Succeeded)
                 {
 
                     Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
 
-                    Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+                    Claim emailClaim = new Claim("Email", user.Email, ClaimValueTypes.Email);
 
                     List<Claim> myclaims = new List<Claim>()
                     {
@@ -81,6 +100,12 @@ namespace BearMountain.Controllers
                     await _userManager.AddClaimsAsync(user, myclaims);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    string subject = "Registration";
+
+                    string msg = "<p>Thank you for registering for a new account with Bear Mountain</p>";
+
+                    await _email.SendEmailAsync(rvm.Email, subject, msg);
 
                     return RedirectToAction("Index", "Home");
 
@@ -115,7 +140,7 @@ namespace BearMountain.Controllers
                 var result = await _signInManager.PasswordSignInAsync(lvm.Email, lvm.Password, false, false);
 
                 if (result.Succeeded)
-                {
+                {                 
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -123,7 +148,6 @@ namespace BearMountain.Controllers
                     ModelState.AddModelError(string.Empty, "Incorrect User Name or password!");
                 }
             }
-
             return View(lvm);
         }
     }

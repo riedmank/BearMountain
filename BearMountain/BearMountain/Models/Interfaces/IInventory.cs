@@ -9,7 +9,7 @@ namespace BearMountain.Models.Interfaces
     {
         Task CreateProduct(Product product);
 
-        Task<List<Product>> GetProducts();
+        Task<IEnumerable<Product>> GetProducts();
 
         Task<Product> GetProductById(int? id);
 

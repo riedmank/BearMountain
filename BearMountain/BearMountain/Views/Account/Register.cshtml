@@ -2,32 +2,41 @@
 
 @{
     ViewData["Title"] = "Register";
+    Layout = "_Layout";
 }
 
-<h2>Register</h2>
+<body>
 
-<form method="post">
+    <h2 class="loginTitle">Register</h2>
 
-    <label asp-for="FirstName"></label>
-    <input asp-for="FirstName" />
-    <span asp-validation-for="FirstName"></span>
+    <article class="login">
 
-    <label asp-for="LastName"></label>
-    <input asp-for="LastName" />
-    <span asp-validation-for="LastName"></span>
+        <form method="post" class="register">
 
-    <label asp-for="Email"></label>
-    <input asp-for="Email" />
-    <span asp-validation-for="Email"></span>
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" />
+            <span asp-validation-for="FirstName"></span>
 
-    <label asp-for="Password"></label>
-    <input asp-for="Password" />
-    <span asp-validation-for="Password"></span>
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" />
+            <span asp-validation-for="LastName"></span>
 
-    <label asp-for="ConfirmPassword"></label>
-    <input asp-for="ConfirmPassword" />
-    <span asp-validation-for="ConfirmPassword"></span>
+            <label asp-for="Email"></label>
+            <input asp-for="Email" />
+            <span asp-validation-for="Email"></span>
 
-    <button type="submit">Register!</button>
+            <label asp-for="Password"></label>
+            <input asp-for="Password" />
+            <span asp-validation-for="Password"></span>
 
-</form>
+            <label asp-for="ConfirmPassword"></label>
+            <input asp-for="ConfirmPassword" />
+            <span asp-validation-for="ConfirmPassword"></span>
+
+            <button type="submit">Register!</button>
+
+        </form>
+
+    </article>
+
+</body>

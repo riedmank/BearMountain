@@ -1,22 +1,32 @@
-﻿@model  BearMountain.Models.ViewModels.LoginViewModel
+﻿@model BearMountain.Models.ViewModels.LoginViewModel
 
 @{
     ViewData["Title"] = "Login";
+    Layout = "_Layout";
 }
 
-<h2>Login</h2>
 
-<form method="post">
-    <div asp-validation-summary="All"></div>
+<body>
 
-    <label asp-for="Email"></label>
-    <input asp-for="Email" alt="Email" placeholder="Email" />
-    <span asp-validation-for="Email"></span>
+    <h2 class="loginTitle">Login</h2>
 
-    <label asp-for="Password"></label>
-    <input asp-for="Password" alt="Password" placeholder="Password" />
-    <span asp-validation-for="Password"></span>
+    <article class="login">
 
-    <button type="submit">Login</button>
+        <form method="post">
+            <div asp-validation-summary="All"></div>
 
-</form>
+            <label asp-for="Email"></label>
+            <input asp-for="Email" alt="Email" placeholder="Email" />
+            <span asp-validation-for="Email"></span>
+
+            <label asp-for="Password"></label>
+            <input asp-for="Password" alt="Password" placeholder="Password" />
+            <span asp-validation-for="Password"></span>
+
+            <button type="submit">Login</button>
+
+        </form>
+
+    </article>
+
+</body>

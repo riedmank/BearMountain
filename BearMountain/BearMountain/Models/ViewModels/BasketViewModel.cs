@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BearMountain.Models
+namespace BearMountain.Models.ViewModels
 {
-    public class Product
+    public class BasketViewModel
     {
-        [Key]
         public int ID { get; set; }
+
+        public int UserBasketID { get; set; }
+
+        public int ProductID { get; set; }
+
+        public int Quantity { get; set; }
+
+        public bool CheckedOut { get; set; }
 
         public string SKU { get; set; }
 
@@ -20,7 +26,5 @@ namespace BearMountain.Models
         public string Description { get; set; }
 
         public string Image { get; set; }
-
-        public ICollection<BasketItem> BasketItems { get; set; }
     }
 }

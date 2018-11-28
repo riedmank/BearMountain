@@ -1,0 +1,39 @@
+﻿@using BearMountain.Models;
+
+@model IEnumerable<BearMountain.Models.ViewModels.BasketViewModel>
+
+@{
+    ViewData["Title"] = "Receipt";
+    Layout = "_Layout";
+}
+
+<h2>Thank you for your order!</h2>
+
+<table class="products">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>               
+                <img src="~/assets/@Html.DisplayFor(modelItem => item.Image)" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                $@Html.DisplayFor(modelItem => item.Price)
+            </td>
+        </tr>
+    }
+</table>
+
+@{
+    decimal grandTotal = 0;
+    foreach (var item in Model)
+    {
+        grandTotal += (item.Price * item.Quantity);
+    }
+    <h2>GRAND TOTAL = $@grandTotal</h2>
+}

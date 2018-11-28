@@ -1,0 +1,55 @@
+﻿@model BearMountain.Models.ViewModels.BasketViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<body>
+
+    <h2>Edit</h2>
+
+    <h4>Product</h4>
+
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SKU)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SKU)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd>
+            <img class="product" src="~/assets/@Html.DisplayFor(model => model.Image)" />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+    </dl>
+    <form method="post">
+        <label for="quantity"></label>
+        <input asp-route-data="quantity" name="quantity" type="number" value="@Model.Quantity"/>
+        <input type="hidden" value="@Model.ID" />
+        <button type="submit">Place Order</button>
+    </form>
+    <a asp-action="Index">Back to Products</a>
+
+</body>
+
+

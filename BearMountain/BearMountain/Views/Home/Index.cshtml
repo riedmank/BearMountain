@@ -1,38 +1,18 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using BearMountain.Models
+@model BearMountain.Models.BasketItem
 
 @inject SignInManager<ApplicationUser> SignInManager
 
-<head>
-    <title>Bear Mountain</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="~/StyleSheet.css" />
-</head>
+@{
+    Layout = "_Layout";
+}
 
 <body>
-    <header>
-        <h1>Bear Mountain</h1>
-        <nav>
-            <a asp-controller="Inventory">Products</a>
-            <a href="/Account/Login">Login</a>
-            <a href="/Account/Register">Register</a>
-            <a href="/Inventory/Cart">Shopping Cart</a>
-            @if (SignInManager.IsSignedIn(User))
-            {
-                <p>Signed in as: @User.Claims.First(name => name.Type == "FullName").Value</p>
-            }
-            else
-            {
-                <p>You are not logged in!</p>
-            }
-        </nav>
-    </header>
-
-    <article>
-        <h4>Featured Products</h4>
-        <img src="~/assets/arcteryxJacket.jpg" />
-        <img src="~/assets/msrSnowShoes.jpg" />
-        <img src="~/assets/reiTent.jpg" />
-    </article>
+        <article>
+            <h4>Featured Products</h4>
+            <img src="~/assets/arcteryxJacket.jpg" />
+            <img src="~/assets/msrSnowShoes.jpg" />
+            <img src="~/assets/reiTent.jpg" />
+        </article>
 </body>

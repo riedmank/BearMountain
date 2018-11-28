@@ -1,63 +1,37 @@
-﻿@model IEnumerable<BearMountain.Models.Product>
+﻿@using Microsoft.AspNetCore.Identity
+@using BearMountain.Models
+
+@model IEnumerable<BearMountain.Models.Product>
+@inject SignInManager<ApplicationUser> SignInManager
 
 @{
     ViewData["Title"] = "Products";
+    Layout = "_Layout";
 }
 
-<head>
-    <title>Bear Mountain</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    @*<link rel="stylesheet" type="text/css" href="~/StyleSheet.css" />*@
-</head>
+@if (SignInManager.IsSignedIn(User))
+{
+    @await Component.InvokeAsync("ItemsInCart", @SignInManager.UserManager.GetUserName(User))
+}
 
 <header>
     <h2>Products</h2>
-    <nav>
-        <a asp-controller="Home">Home</a>
-    </nav>
 </header>
 
-<table>
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SKU)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
+
+<table class="products">
         @foreach (var item in Model)
         {
             <tr>
+                <td style="text-align: center;">
+                    <img src="~/assets/@Html.DisplayFor(modelItem => item.Image)" />
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.SKU)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    <img class="product" src="~/assets/@Html.DisplayFor(modelItem => item.Image)" />
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a>
                 </td>
             </tr>
         }
-    </tbody>
 </table>
