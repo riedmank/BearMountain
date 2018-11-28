@@ -4,9 +4,10 @@
 
 @{
     ViewData["Title"] = "Receipt";
+    Layout = "_Layout";
 }
 
-<h4>Receipt</h4>
+<h2>Thank you for your order!</h2>
 
 <table class="products">
     @foreach (var item in Model)
@@ -36,5 +37,5 @@
     {
         grandTotal += (item.Price * item.Quantity);
     }
-    <p>Grand total = $@grandTotal</p>
+    <h2>GRAND TOTAL = $@grandTotal</h2>
 }

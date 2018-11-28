@@ -86,7 +86,7 @@ namespace BearMountain.Controllers
             item.CheckedOut = false;
             await _cart.AddBasketItem(item);
             var product = await _product.GetProductById(id);
-            return View(product);
+            return RedirectToAction("Index");
         }
 
         /// <summary>

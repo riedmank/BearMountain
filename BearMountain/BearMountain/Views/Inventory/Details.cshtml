@@ -9,14 +9,6 @@
     Layout = "_Layout";
 }
 
-<div>
-
-    @if (SignInManager.IsSignedIn(User))
-    {
-        @await Component.InvokeAsync("ItemsInCart", @SignInManager.UserManager.GetUserName(User))
-    }
-
-</div>
 
 <body>
 
