@@ -13,10 +13,8 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.ProductID">
-                    <img src="~/assets/@Html.DisplayFor(modelItem => item.Image)" />
-                </a>
+            <td>               
+                <img src="~/assets/@Html.DisplayFor(modelItem => item.Image)" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
