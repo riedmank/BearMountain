@@ -1,21 +1,27 @@
 ﻿header {
     margin: 3% auto;
     text-align: center;
-    width: 65%;
+    max-width: 65%;
     border: 5px double brown;
 }
 
 article {
     margin: 0 auto;
+    max-width: 60%;
     margin-top: 30px;
     text-align: center;
-    background-color: forestgreen;
+    padding: 2%;
     border: 5px double brown;
+    height: 1000px;
+    background-image: url("assets/BearMountain.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
     article img {
         max-height: 200px;
         max-width: 250px;
+        margin: 5px;
     }
 
 .login {
@@ -37,9 +43,9 @@ article {
 
 body {
     margin: 3%;
-    /*background-image: url("assets/BearMountain.jpg");*/
-    /*background-repeat: no-repeat;*/
-    /*background-size: cover;*/
+    /*background-image: url("assets/BearMountain.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;*/
 }
 
 nav {
@@ -58,16 +64,18 @@ ul {
 h1 {
     font-family: 'Poiret One', cursive;
     text-align: center;
-    font-size: 48px;
+    font-size: 62px;
     font-weight: 900;
-    margin: 2% 0;
+    letter-spacing: 2px;
+    margin: 1% 0;
 }
 
 h2 {
-    font-family: 'Unica One', cursive;
+    font-family: 'Poiret One', cursive;
     text-align: center;
     font-size: 48px;
     margin-bottom: 2%;
+    font-weight: 900;
 }
 
 h4 {
@@ -75,6 +83,7 @@ h4 {
     text-align: center;
     font-weight: 900;
     font-size: 36px;
+    margin-bottom: 3%;
 }
 
 li {

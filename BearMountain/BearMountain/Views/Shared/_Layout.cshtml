@@ -11,12 +11,13 @@
     <link rel="stylesheet" type="text/css" href="~/StyleSheet.css" />
 </head>
 
+
 <header>
     <h1>Bear Mountain</h1>
 
     @if (SignInManager.IsSignedIn(User))
     {
-        <p>Signed in as: @User.Claims.First(name => name.Type == "FullName").Value</p>
+        <p>Welcome back, @User.Claims.First(name => name.Type == "FullName").Value !</p>
     }
     else
     {
