@@ -9,18 +9,7 @@
 }
 
 <body>
-    <header>
-        <h1>Bear Mountain</h1>
 
-        @if (SignInManager.IsSignedIn(User))
-        {
-            <p>Signed in as: @User.Claims.First(name => name.Type == "FullName").Value</p>
-        }
-        else
-        {
-            <p>You are not logged in!</p>
-        }
-    </header>
     <article>
         <h4>Featured Products</h4>
         <img src="~/assets/arcteryxJacket.jpg" />
