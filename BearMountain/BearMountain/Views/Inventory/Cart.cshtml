@@ -35,7 +35,7 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="products">
         @foreach (var item in Model)
         {
             <tr>
@@ -55,7 +55,7 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    <img class="product" src="~/assets/@Html.DisplayFor(modelItem => item.Image)" />
+                    <img class="products" src="~/assets/@Html.DisplayFor(modelItem => item.Image)" style="text-align: center;"/>
                 </td>
                 <td>
                     <a asp-controller="Inventory" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
