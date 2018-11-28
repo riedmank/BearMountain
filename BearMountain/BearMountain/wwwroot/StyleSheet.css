@@ -1,27 +1,53 @@
-﻿header {
+﻿.index {
+    margin: 3%;
+    background-image: url("assets/BearMountain.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body {
+    background-color: skyblue;
+}
+
+header {
     margin: 0 auto;
-    width: 300px;
+    width: 600px;
     margin-top: 30px;
+    margin-bottom: 30px;
     text-align: center;
-    background-color: forestgreen;
+    background-color: ivory;
     border: 5px double brown;
+}
+
+nav li, nav ul {
+    background-color: ivory;
+}
+
+nav ul:first-child {
+    padding-left: 25px;
 }
 
 article {
     margin: 0 auto;
     margin-top: 30px;
     text-align: center;
-    background-color: forestgreen;
+    background-color: ivory;
     border: 5px double brown;
 }
 
-    article img {
-        max-height: 200px;
-        max-width: 250px;
-    }
+article img {
+    max-height: 200px;
+    max-width: 250px;
+}
 
 .login {
-    max-width: 600px;
+    max-width: 400px;
+    margin-bottom: 30px;
+}
+
+.login input {
+    display: block;
+    margin: 10px auto;
 }
 
 .loginTitle {
@@ -29,24 +55,17 @@ article {
     margin-top: 30px;
     max-width: 200px;
     text-align: center;
-    background-color: forestgreen;
+    background-color: ivory;
     border: 5px double brown;
 }
 
-.register {
-    padding-top: 15px;
-}
-
-body {
-    margin: 3%;
-    /*background-image: url("assets/BearMountain.jpg");*/
-    /*background-repeat: no-repeat;*/
-    /*background-size: cover;*/
+form {
+    margin-bottom: 20px;
 }
 
 ul {
     list-style-type: none;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     overflow: hidden;
     border: 1px solid #e7e7e7;
@@ -61,22 +80,22 @@ li {
     float: left;
 }
 
-    li a {
-        display: block;
-        color: #666;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
+li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
 
-        li a:hover:not(.active) {
-            background-color: #ddd;
-        }
+li a:hover:not(.active) {
+    background-color: #ddd;
+}
 
-        li a.active {
-            color: white;
-            background-color: #4CAF50;
-        }
+li a.active {
+    color: white;
+    background-color: #4CAF50;
+}
 
 table.basket {
     /*margin: 0 3%;*/
@@ -85,25 +104,35 @@ table.basket {
     overflow-x: scroll;
 }
 
-    .basket tr {
-        display: inline-flex;
-        padding: 15px;
-    }
+.basket tr {
+    display: inline-flex;
+    padding: 15px;
+}
 
-    .basket td {
-        padding: 5px;
-    }
+.basket td {
+    padding: 5px;
+}
 
-    .basket img {
-        max-width: 75px;
-        max-height: 100px;
-    }
+.basket img {
+    max-width: 75px;
+    max-height: 100px;
+}
+
+.products {
+    margin-left: 10%;
+    margin-bottom: 30px;
+}
+
+tr {
+    background-color: ivory;
+    border: 5px double brown;
+}
 
 .products img {
     max-width: 350px;
     max-height: 350px;
 }
 
-    .products td {
-        padding: 40px;
-    }
+.products td {
+    padding: 40px;
+}

@@ -16,11 +16,17 @@ namespace BearMountain.Controllers
     public class CheckoutController : Controller
     {
         private BearMountainDbContext _context;
-
+        /// <summary>
+        /// The cart
+        /// </summary>
         private ICart _cart;
-
+        /// <summary>
+        /// The product
+        /// </summary>
         private IInventory _product;
-
+        /// <summary>
+        /// The email
+        /// </summary>
         private IEmailSender _email;
 
         public CheckoutController(BearMountainDbContext context, IInventory product, ICart cart, IEmailSender email)
@@ -31,6 +37,11 @@ namespace BearMountain.Controllers
             _email = email;
         }
 
+        /// <summary>
+        /// Creates a receipt of items the user bought.
+        /// </summary>
+        /// <param name="userName">Name of the user.</param>
+        /// <returns>Returns a view of a receipt.</returns>
         [HttpGet]
         public async Task<IActionResult> Receipt(string userName)
         {

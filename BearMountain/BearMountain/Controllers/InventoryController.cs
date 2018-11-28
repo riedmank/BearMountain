@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BearMountain.Controllers
 {
-    //[Authorize(Policy = "EmailPolicy")]
     public class InventoryController : Controller
     {
         /// <summary>
