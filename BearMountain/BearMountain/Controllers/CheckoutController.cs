@@ -103,5 +103,13 @@ namespace BearMountain.Controllers
             }
             return View(BVMList);
         }        
+
+        [HttpGet]
+        public async Task<IActionResult> Index(string userName)
+        {
+
+
+            return View();
+        }
     }
 }
