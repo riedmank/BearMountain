@@ -27,6 +27,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
             </th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody class="products">
@@ -56,6 +58,15 @@
         }
     </tbody>
 </table>
+
+<h2>Enter Billing and Shipping Information</h2>
+<select>
+    <option value="amex">American Express</option>
+    <option value="visa">Visa</option>
+    <option value="mc">MasterCard</option>
+    <option value="discover">Discover</option>
+</select>
+
 <form>
     <input type="hidden" name="userName" value="@SignInManager.UserManager.GetUserName(User)" />
     <button type="submit" asp-controller="Checkout" asp-action="Receipt" style="text-align:center">Checkout</button>
