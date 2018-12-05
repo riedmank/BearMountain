@@ -29,10 +29,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody class="products">
@@ -67,5 +63,5 @@
 </table>
 <form>
     <input type="hidden" name="userName" value="@SignInManager.UserManager.GetUserName(User)" />
-    <button type="submit" asp-controller="Checkout" asp-action="Receipt" style="text-align:center">Proceed to Checkout</button>
+    <button type="submit" asp-controller="Checkout" asp-action="Index" style="text-align:center">Proceed to Checkout</button>
 </form>

@@ -27,13 +27,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody class="products">
@@ -53,10 +46,7 @@
                     @Html.DisplayFor(modelItem => item.Quantity)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    <img class="products" src="~/assets/@Html.DisplayFor(modelItem => item.Image)" style="text-align: center;" />
+                    <img class="products" src="~/assets/@Html.DisplayFor(modelItem => item.Image)" style="text-align: center;max-width: 150px" />
                 </td>
                 <td>
                     <a asp-controller="Inventory" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
