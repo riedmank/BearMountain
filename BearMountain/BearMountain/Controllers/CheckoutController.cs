@@ -103,5 +103,40 @@ namespace BearMountain.Controllers
             }
             return View(BVMList);
         }        
+
+        [HttpGet]
+        public async Task<IActionResult> Index(string userName)
+        {
+            var cartItems = await _cart.GetAllItemsFromBasket();
+            List<Product> products = new List<Product>();
+            foreach (var item in cartItems)
+            {
+                var product = await _product.GetProductById(item.ProductID);
+                products.Add(product);
+
+            }
+            var col = cartItems.Zip(products, (x, y) => new { BasketItem = x, Product = y });
+            List<BasketViewModel> BVMList = new List<BasketViewModel>();
+            foreach (var item in col)
+            {
+                if (!item.BasketItem.CheckedOut)
+                {
+                    BasketViewModel BVM = new BasketViewModel();
+                    BVM.SKU = item.Product.SKU;
+                    BVM.Name = item.Product.Name;
+                    BVM.Price = item.Product.Price;
+                    BVM.Description = item.Product.Description;
+                    BVM.Image = item.Product.Image;
+                    BVM.ProductID = item.Product.ID;
+
+                    BVM.Quantity = item.BasketItem.Quantity;
+                    BVM.CheckedOut = item.BasketItem.CheckedOut;
+                    BVM.ID = item.BasketItem.ID;
+                    BVM.UserBasketID = item.BasketItem.UserBasketID;
+                    BVMList.Add(BVM);
+                }
+            }
+            return View(BVMList);
+        }
     }
 }

@@ -76,11 +76,11 @@ namespace BearMountain.Controllers
         /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Details(int id, int quantity)
+        public async Task<IActionResult> Details(int id, int quantity, string userName)
         {
             BasketItem item = new BasketItem();
             item.ProductID = id;
-            item.UserBasketID = _context.UserBasket.FirstOrDefault().ID;
+            item.UserBasketID = _context.UserBasket.Where(user => user.UserID == userName).FirstOrDefault().ID;
             item.Quantity = quantity;
             item.CheckedOut = false;
             await _cart.AddBasketItem(item);
