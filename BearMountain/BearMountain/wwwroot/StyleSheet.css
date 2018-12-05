@@ -183,3 +183,7 @@ tr {
 .products td {
     padding: 40px;
 }
+
+select {
+    margin: 24px 0px;
+}
