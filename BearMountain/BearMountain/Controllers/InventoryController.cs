@@ -40,6 +40,58 @@ namespace BearMountain.Controllers
         }
 
         /// <summary>
+        /// Routes to a create product page.
+        /// </summary>
+        /// <returns>Returns a create product page</returns>
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Creates the specified product.
+        /// </summary>
+        /// <param name="product">The product.</param>
+        [HttpPost]
+        public void Create(Product product)
+        {
+            _product.CreateProduct(product);
+        }
+
+        /// <summary>
+        /// Deletes the product.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        [HttpDelete]
+        public void DeleteProduct(int id)
+        {
+            _product.DeleteProduct(id);
+        }
+
+        /// <summary>
+        /// Updates the specified product.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>Returns the updated product view</returns>
+        [HttpGet]
+        public async Task<IActionResult> Update(int id)
+        {
+            var product = await _product.GetProductById(id);
+            return View(product);
+        }
+
+        /// <summary>
+        /// Updates the specified product.
+        /// </summary>
+        /// <param name="product">The product.</param>
+        [HttpPut]
+        public void Update(Product product)
+        {
+            _product.UpdateProduct(product);
+        }
+
+        /// <summary>
         /// Displays all products
         /// </summary>
         /// <returns>Returns a view of all objects</returns>

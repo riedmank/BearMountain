@@ -50,10 +50,16 @@ namespace BearMountain
                 .AddDefaultTokenProviders();
 
             services.AddDbContext<BearMountainDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("ProductionDb")));
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("IdentityDb")));
+
+            //services.AddDbContext<BearMountainDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultIdentityConnection")));
 
             services.AddTransient<IInventory, InventoryService>();
             services.AddTransient<ICart, CartService>();
